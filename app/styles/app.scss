@@ -1,0 +1,13 @@
+@import "base/variables";
+
+// Foundation
+@import "base/foundation-settings";
+@import "foundation";
+@include foundation-everything;
+
+// Components
+.container {
+  margin-top: 1rem;
+}
+@import "components/page-title";
+@import "components/container";
