@@ -107,3 +107,22 @@ var newNoteRef = notesRef.push({
     text: 'walk the dog!'
 });
 console.log('Todo id', newNoteRef.key);
+
+var todosRef = firebaseRef.child('todos');
+
+todosRef.on('child_added', (snapshot)=> {
+    console.log('todo added', snapshot.key, snapshot.val());
+});
+todosRef.on('child_changed', (snapshot)=> {
+    console.log('todo changed', snapshot.key, snapshot.val());
+});
+todosRef.on('child_removed', (snapshot)=> {
+    console.log('todo removed', snapshot.key, snapshot.val());
+});
+
+todosRef.push({
+    text: 'Stop and smell the roses...'
+});
+todosRef.push({
+    text: 'Go food shopping'
+});

@@ -9,8 +9,6 @@ var actions = require('actions');
 var store = require('configureStore').configure();
 var ToDoAPI = require('ToDoAPI');
 
-import './../playground/firebase/index';
-
 console.log(store);
 
 store.subscribe(() => {
