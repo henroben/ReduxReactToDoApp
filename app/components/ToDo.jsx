@@ -24,7 +24,7 @@ export var ToDo = React.createClass({
             <div>
                 <ListGroupItem className={todoClassName} onClick={() => {
                     //this.props.onToggle(id);
-                    dispatch(actions.toggleToDo(id));
+                    dispatch(actions.startToggleToDo(id, !completed));
                 }}>
                     <div className="col-md-1"><input type="checkbox" className="large" checked={completed}/></div>
                     <div className="col-md-11">

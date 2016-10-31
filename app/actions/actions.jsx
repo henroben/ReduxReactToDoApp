@@ -40,16 +40,51 @@ export var startAddToDo = (text) => {
     }
 };
 
-export var toggleToDo = (id) => {
+export var updateToDo = (id, updates) => {
     return {
-        type: 'TOGGLE_TODO',
-        id
+        type: 'UPDATE_TODO',
+        id,
+        updates
     };
 };
+
+export var startToggleToDo = (id, completed) => {
+    return (dispatch, getState) => {
+        var todoRef = firebaseRef.child(`todos/${id}`);
+        var updates = {
+            completed,
+            completedAt: completed ? moment().unix() : null
+        };
+
+        return todoRef.update(updates).then(() => {
+            dispatch(updateToDo(id, updates));
+        });
+    };
+}
 
 export var addToDos = (todos) => {
     return {
         type: 'ADD_TODOS',
         todos
     }
+};
+
+export var startAddToDos = () => {
+    return (dispatch, getState) => {
+        var todosRef = firebaseRef.child('todos');
+
+        return todosRef.once('value').then((snapshot) => {
+            var todos = snapshot.val() || {};
+            var parsedTodos = [];
+
+            Object.keys(todos).forEach((todoId) => {
+                parsedTodos.push({
+                    id: todoId,
+                    ...todos[todoId]
+                });
+            });
+
+            dispatch(addToDos(parsedTodos));
+        });
+    };
 };

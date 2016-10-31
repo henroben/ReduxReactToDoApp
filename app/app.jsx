@@ -11,16 +11,7 @@ var ToDoAPI = require('ToDoAPI');
 
 console.log(store);
 
-store.subscribe(() => {
-    var state = store.getState();
-
-    console.log('New State', store);
-
-    ToDoAPI.setToDos(state.todos);
-});
-
-var initialToDos = ToDoAPI.getToDos();
-store.dispatch(actions.addToDos(initialToDos));
+store.dispatch(actions.startAddToDos());
 
 // Load foundation
 //require('style!css!foundation-sites/dist/foundation.min.css');
