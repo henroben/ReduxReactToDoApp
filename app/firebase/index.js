@@ -3,11 +3,11 @@ import firebase from 'firebase';
 try {
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyCq4GX0R1MqUi9d7VY46zDjVn7UUxN8tlw",
-        authDomain: "mercer-todo-app.firebaseapp.com",
-        databaseURL: "https://mercer-todo-app.firebaseio.com",
-        storageBucket: "mercer-todo-app.appspot.com",
-        messagingSenderId: "961095309109"
+        apiKey: process.env.API_KEY,
+        authDomain: process.env.AUTH_DOMAIN,
+        databaseURL: process.env.DATABASE_URL,
+        storageBucket: process.env.STORAGE_BUCKET,
+        messagingSenderId: process.env.MESSAGING_SENDER_ID
     };
     firebase.initializeApp(config);
 } catch (e) {

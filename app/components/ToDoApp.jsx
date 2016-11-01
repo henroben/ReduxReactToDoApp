@@ -12,6 +12,9 @@ var ToDoApp = React.createClass({
     render: function() {
         return(
             <div>
+                <div className="page-actions">
+                    <a href="#">Logout</a>
+                </div>
                 <Grid>
                     <Row className="show-grid">
                         <Col md={3} xsHidden></Col>
@@ -21,7 +24,8 @@ var ToDoApp = React.createClass({
                             <ToDoList/>
                             <AddToDo/>
                         </Col>
-                        <Col md={3} xsHidden></Col>
+                        <Col md={3} xsHidden>
+                        </Col>
                     </Row>
                 </Grid>
             </div>
