@@ -1,5 +1,5 @@
 node_modules/
-public/bundle.js
-config/
 ._.DS_Store
 .idea
+config/
+public/bundle.js

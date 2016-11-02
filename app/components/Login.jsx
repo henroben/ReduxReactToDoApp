@@ -1,7 +1,15 @@
 import React from 'react';
+import * as Redux from 'react-redux';
 var {Button, Grid, Col, Row} = require('react-bootstrap');
 
+import * as actions from 'actions';
+
 export var Login = React.createClass({
+    onLogin() {
+        var {dispatch} = this.props;
+
+        dispatch(actions.startLogin());
+    },
     render: function () {
         return(
             <div>
@@ -11,13 +19,14 @@ export var Login = React.createClass({
                         <Col md={6}>
                             <h1 className="page-title">Todo App</h1>
                             <div className="panel panel-default">
-                                <div className="panel-body">
+                                <div className="panel-body callout-auth">
                                     <p>Please log in with your GitHub account to continue</p>
-                                    <form ref="loginForm" className="loginForm">
+                                    {/* <form ref="loginForm" className="loginForm">
                                         <input type="text" ref="username" placeholder="Username" className="form-control"/>
                                         <input type="password" ref="password" placeholder="Password" className="form-control"/>
-                                        <Button type="submit" bsStyle="primary" block>Login With GitHub</Button>
-                                    </form>
+                                        <Button  bsStyle="primary" block>Login With GitHub</Button>
+                                    </form> */}
+                                    <button className="btn btn-primary btn-block" onClick={this.onLogin}>Login with GitHub</button>
                                 </div>
                             </div>
                         </Col>
@@ -29,4 +38,4 @@ export var Login = React.createClass({
     }
 });
 
-export default Login;
+export default Redux.connect()(Login);

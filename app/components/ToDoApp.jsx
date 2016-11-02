@@ -1,19 +1,26 @@
-var React = require('react');
+import React from 'react';
+import * as Redux from 'react-redux';
+
 var {Grid, Row, Col} = require('react-bootstrap');
-var uuid = require('node-uuid');
-var moment = require('moment');
 
 import ToDoList from 'ToDoList';
 import AddToDo from 'AddToDo';
 import ToDoSearch from 'ToDoSearch';
+import * as actions from 'actions';
 
 
-var ToDoApp = React.createClass({
-    render: function() {
+export var ToDoApp = React.createClass({
+    onLogout(e) {
+        var {dispatch} = this.props;
+        e.preventDefault();
+
+        dispatch(actions.startLogout());
+    },
+    render() {
         return(
             <div>
                 <div className="page-actions">
-                    <a href="#">Logout</a>
+                    <a href="#" onClick={this.onLogout}>Logout</a>
                 </div>
                 <Grid>
                     <Row className="show-grid">
@@ -33,4 +40,4 @@ var ToDoApp = React.createClass({
     }
 });
 
-module.exports = ToDoApp;
+export default Redux.connect()(ToDoApp);
