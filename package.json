@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "Boilerplate",
   "version": "1.0.0",
-  "description": "Simple react app",
+  "description": "Simple react redux app",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test karma start",
