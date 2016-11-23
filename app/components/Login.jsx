@@ -1,16 +1,21 @@
 import React from 'react';
 import * as Redux from 'react-redux';
-var {Button, Grid, Col, Row} = require('react-bootstrap');
+import {Button, Grid, Col, Row} from 'react-bootstrap';
 
 import * as actions from 'actions';
 
-export var Login = React.createClass({
+export class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+        this.onLogin = this.onLogin.bind(this);
+    }
     onLogin() {
         var {dispatch} = this.props;
 
         dispatch(actions.startLogin());
-    },
-    render: function () {
+    }
+    render() {
         return(
             <div>
                 <Grid>
@@ -22,10 +27,10 @@ export var Login = React.createClass({
                                 <div className="panel-body callout-auth">
                                     <p>Please log in with your GitHub account to continue</p>
                                     {/* <form ref="loginForm" className="loginForm">
-                                        <input type="text" ref="username" placeholder="Username" className="form-control"/>
-                                        <input type="password" ref="password" placeholder="Password" className="form-control"/>
-                                        <Button  bsStyle="primary" block>Login With GitHub</Button>
-                                    </form> */}
+                                     <input type="text" ref="username" placeholder="Username" className="form-control"/>
+                                     <input type="password" ref="password" placeholder="Password" className="form-control"/>
+                                     <Button  bsStyle="primary" block>Login With GitHub</Button>
+                                     </form> */}
                                     <button className="btn btn-primary btn-block" onClick={this.onLogin}>Login with GitHub</button>
                                 </div>
                             </div>
@@ -34,8 +39,9 @@ export var Login = React.createClass({
                     </Row>
                 </Grid>
             </div>
-        );
+        )
     }
-});
+}
+
 
 export default Redux.connect()(Login);

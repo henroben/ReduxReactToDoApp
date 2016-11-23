@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-var expect = require('expect');
+import expect from 'expect';
 
 import firebase, {firebaseRef} from 'app/firebase/';
 var actions = require('actions');

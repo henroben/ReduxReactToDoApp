@@ -1,9 +1,13 @@
-var React = require('react');
-var {connect} = require('react-redux');
-var actions = require('actions');
+import React from 'react';
+import {connect} from 'react-redux';
 
-export var ToDoSearch = React.createClass({
-    render: function() {
+import * as actions from 'actions';
+
+export class ToDoSearch extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         var {dispatch, showCompleted, searchText} = this.props;
         return(
             <div className="containter__header">
@@ -18,13 +22,13 @@ export var ToDoSearch = React.createClass({
                         <input type="checkbox" ref="showCompleted" checked={showCompleted} onChange={() => {
                             dispatch(actions.toggleShowCompleted());
                         }}/>
-                         Show completed tasks
+                        Show completed tasks
                     </label>
                 </div>
             </div>
         );
     }
-});
+}
 
 export default connect(
     (state) => {

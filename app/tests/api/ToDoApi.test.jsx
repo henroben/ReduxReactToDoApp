@@ -55,5 +55,11 @@ describe('ToDoAPI', () => {
             expect(filteredTodos.length).toBe(1);
         });
 
+        it('should return items that contain matching search text if upper case', () => {
+            var filteredTodos = ToDoAPI.filterToDos(todos, false, 'Other');
+
+            expect(filteredTodos.length).toBe(1);
+        });
+
     });
 });

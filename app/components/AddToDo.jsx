@@ -1,10 +1,15 @@
-var React = require('react');
-var {connect} = require('react-redux');
-var {Button} = require('react-bootstrap');
-var actions = require('actions');
+import React from 'react';
+import {connect} from 'react-redux';
+import {Button} from 'react-bootstrap';
 
-export var AddToDo = React.createClass({
-    onSubmit: function(e) {
+import * as actions from 'actions';
+
+export class AddToDo extends React.Component{
+    constructor(props) {
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+    onSubmit(e) {
         e.preventDefault();
         var {dispatch} = this.props;
         var strText = this.refs.addtext.value;
@@ -15,8 +20,8 @@ export var AddToDo = React.createClass({
         } else {
             this.refs.addtext.focus();
         }
-    },
-    render: function () {
+    }
+    render() {
         return (
             <div className="container__footer">
                 <form ref="form" onSubmit={this.onSubmit} className="testForm">
@@ -26,6 +31,6 @@ export var AddToDo = React.createClass({
             </div>
         );
     }
-});
+};
 
 export default connect()(AddToDo);

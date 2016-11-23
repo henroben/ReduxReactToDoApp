@@ -1,11 +1,11 @@
-var React = require('react');
-var {connect} = require('react-redux');
-var {ListGroup} = require('react-bootstrap');
+import React from 'react';
+import {connect} from 'react-redux';
+import {ListGroup} from 'react-bootstrap';
 import ToDo from 'ToDo';
-var ToDoAPI = require('ToDoAPI');
+import ToDoAPI from 'ToDoAPI';
 
-export var ToDoList = React.createClass({
-    render: function () {
+export class ToDoList extends React.Component {
+    render() {
         var {todos, showCompleted, searchText} = this.props;
         var renderToDos = () => {
             var filteredTodos = ToDoAPI.filterToDos(todos, showCompleted, searchText);
@@ -28,7 +28,7 @@ export var ToDoList = React.createClass({
             </div>
         );
     }
-});
+};
 
 export default connect(
     (state) => {
